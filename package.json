@@ -1,0 +1,19 @@
+{
+  "name": "simple-chat",
+  "version": "1.0.0",
+  "description": "A simple chat in javascript using Node.js, Express.js, Socket.io and jQuery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroPadilhaPortella/simple-chat-js.git"
+  },
+  "author": "pedro portella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PedroPadilhaPortella/simple-chat-js/issues"
+  },
+  "homepage": "https://github.com/PedroPadilhaPortella/simple-chat-js#readme"
+}
