@@ -4,7 +4,7 @@
   "description": "A simple chat in javascript using Node.js, Express.js, Socket.io and jQuery",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/PedroPadilhaPortella/simple-chat-js/issues"
   },
-  "homepage": "https://github.com/PedroPadilhaPortella/simple-chat-js#readme"
+  "homepage": "https://github.com/PedroPadilhaPortella/simple-chat-js#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
+  }
 }

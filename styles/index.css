@@ -1,0 +1,61 @@
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#login-area {
+    width: 500px;
+    height: 300px;
+    border: 1px solid #000;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+#login-text {
+    width: 100%;
+    text-align: center;
+}
+
+#login-form-area {
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#username {
+    height: 50px;
+    width: 300px;
+    padding: 0px 5px;
+    font-size: 26px;
+    border: 1px solid #000;
+    background-color: #ddd;
+    outline: none;
+    outline-offset: 0;
+}
+
+#login-submit {
+    height: 52px;
+    width: 100px;
+    font-size: 26px;
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+    cursor: pointer;
+    outline: none;
+    outline-offset: 0;
+}
+
+#login-submit:hover {
+    color: #fff;
+    background-color: #000;
+}

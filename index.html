@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <script type="text/javascript" src="socket.io/socket.io.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="login-area">
+        <div id="login-text">
+            <h1>Login Page</h1>
+        </div>
+        <div id="login-form-area">
+            <form id="login-form">
+                <input id="username" type="text" placeholder="Username" autocomplete="off">
+                <input id="login-submit" type="submit" value="login">
+            </form>
+        </div>
+    </div>
+</body>
+
+    <script type="text/javascript">
+        const socket = io();
+    </script>
+</html>
