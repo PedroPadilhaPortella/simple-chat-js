@@ -37,11 +37,7 @@
         </div>
         <div id="messages-area">
             <div id="display-messages-area">
-                <ul id="messages">
-                    <li>Pedro: Hello</li>
-                    <li>Daniel: Hello</li>
-                    <li>Samuel: Hello</li>
-                </ul>
+                <ul id="messages"></ul>
             </div>
             <div id="message-form-area">
                 <form id="message-form">
@@ -54,10 +50,24 @@
 </body>
 
 <script type="text/javascript">
+    function updateUsers(users) {
+        $('#users').html('')
+        for (let i = 0; i < users.length; i++) {
+            $('#users').append(`<li>${users[i]}</li>`)
+        }
+    }
+
+    function updateChat({ username, message }) {
+        // for (let i = 0; i < messages.length; i++) {
+        //     const { username, message } = messages[i]
+            $('#messages').append(`<li><b>${username}</b>: ${message}</li>`)
+        // }
+    }
+
     const socket = io();
 
-    $('#login-form').submit((e) => {
-        e.preventDefault()
+    $('#login-form').submit((event) => {
+        event.preventDefault()
         if ($('#username').val() == '' || $('#username').val() == ' ') {
             alert('Please enter a username')
         } else {
@@ -68,13 +78,6 @@
         }
     })
 
-    function updateUsers(users) {
-        $('#users').html('')
-        for (let i = 0; i < users.length; i++) {
-            $('#users').append(`<li>${users[i]}</li>`)
-        }
-    }
-
     socket.on('has connected', (data) => {
         updateUsers(data.users)
         $('#messages').append(`<li>${data.username} <i>has connected</i></li>`)
@@ -83,6 +86,20 @@
     socket.on('has disconnected', (data) => {
         updateUsers(data.users)
         $('#messages').append(`<li>${data.username} <i>has disconnected</i></li>`)
+    })
+
+    
+    $('#message-form').submit((event) => {
+        event.preventDefault()
+        if ($('#message').val() != '' && $('#message').val() != ' ') {
+            message = $('#message').val()
+            socket.emit('send message', message)
+            $('#message').val('')
+        }
+    })
+
+    socket.on('update messages', (data) => {
+        updateChat(data)
     })
     
 </script>
