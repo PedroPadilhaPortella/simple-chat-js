@@ -32,11 +32,7 @@
                 <h1>Online Users:</h1>
             </div>
             <div id="online-users">
-                <ul id="users">
-                    <li>Pedro</li>
-                    <li>Daniel</li>
-                    <li>Samuel</li>
-                </ul>
+                <ul id="users"></ul>
             </div>
         </div>
         <div id="messages-area">
@@ -46,6 +42,12 @@
                     <li>Daniel: Hello</li>
                     <li>Samuel: Hello</li>
                 </ul>
+            </div>
+            <div id="message-form-area">
+                <form id="message-form">
+                    <input id="message" type="text" placeholder="Type your message..." autocomplete="off">
+                    <input id="message-submit" type="submit" value="send">
+                </form>
             </div>
         </div>
     </div>
@@ -57,12 +59,32 @@
     $('#login-form').submit((e) => {
         e.preventDefault()
         if ($('#username').val() == '' || $('#username').val() == ' ') {
-            alert('Please enter a username');
+            alert('Please enter a username')
         } else {
+            username = $('#username').val()
             $('#login-area').hide()
             $('#chat-area').show()
+            socket.emit('has connected', username)
         }
     })
+
+    function updateUsers(users) {
+        $('#users').html('')
+        for (let i = 0; i < users.length; i++) {
+            $('#users').append(`<li>${users[i]}</li>`)
+        }
+    }
+
+    socket.on('has connected', (data) => {
+        updateUsers(data.users)
+        $('#messages').append(`<li>${data.username} <i>has connected</i></li>`)
+    })
+    
+    socket.on('has disconnected', (data) => {
+        updateUsers(data.users)
+        $('#messages').append(`<li>${data.username} <i>has disconnected</i></li>`)
+    })
+    
 </script>
 
 </html>
